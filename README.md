@@ -27,7 +27,7 @@ The `theme-color` meta tag and `site.webmanifest` hold the indigo/white hex valu
 
 ## Deploy
 
-Any static host works (Cloudflare Pages, Netlify, GitHub Pages).
+Any static host works (Cloudflare Pages, Netlify, GitHub Pages). `public/CNAME` carries the custom domain into `dist/` for GitHub Pages.
 
 - Build command: `npm run build`
 - Output directory: `dist`
