@@ -1,0 +1,37 @@
+---
+interface Props {
+  label: string;
+  href: string;
+  variant?: 'primary' | 'secondary' | 'accent';
+  size?: 'md' | 'lg';
+  full?: boolean;
+}
+const { label, href, variant = 'primary', size = 'md', full = false } = Astro.props;
+---
+<a class:list={['btn', `btn--${variant}`, `btn--${size}`, { 'btn--full': full }]} href={href}>{label}</a>
+
+<style>
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: var(--radius-md);
+    min-height: 48px;
+    padding: 12px 20px;
+    border: 2px solid transparent;
+    transition: background-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
+  }
+  .btn--lg { min-height: 52px; padding: 14px 24px; }
+  .btn--primary { background: var(--brand); color: var(--on-brand); }
+  .btn--primary:hover, .btn--primary:active { background: var(--brand-hover); color: var(--on-brand); }
+  .btn--secondary { border-color: var(--brand); color: var(--brand); background: transparent; }
+  .btn--secondary:hover { background: var(--surface-alt); color: var(--brand); }
+  .btn--accent { background: var(--accent); color: var(--ink); font-weight: 800; }
+  .btn--accent:hover { background: var(--accent-hover); color: var(--ink); }
+  @media (max-width: 599px) {
+    .btn--full { width: 100%; }
+  }
+</style>

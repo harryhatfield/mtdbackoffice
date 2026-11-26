@@ -1,0 +1,17 @@
+---
+interface Props { items: { label: string; date: string }[]; }
+const { items } = Astro.props;
+---
+<ul class="dates">
+  {items.map((i) => (
+    <li><span class="label">{i.label}</span><span class="date">{i.date}</span></li>
+  ))}
+</ul>
+
+<style>
+  .dates { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 16px; }
+  li { display: flex; justify-content: space-between; align-items: center; gap: 12px; border-bottom: 1px solid var(--line); padding-bottom: 12px; }
+  li:last-child { border-bottom: 0; padding-bottom: 0; }
+  .label { font-weight: 700; }
+  .date { color: var(--ink-muted); white-space: nowrap; }
+</style>

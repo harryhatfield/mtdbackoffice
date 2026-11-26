@@ -1,0 +1,62 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { EMAIL, SITE_URL } from '../config';
+
+interface Props { title?: string; description?: string; noindex?: boolean; jsonLd?: boolean; }
+const {
+  title = 'MTD Back Office · MTD and admin setup for sole traders and landlords',
+  description = 'From 6 April 2027, sole traders and landlords earning over £30,000 must keep digital records and send HMRC quarterly updates. We set it all up for you.',
+  noindex = false,
+  jsonLd = false,
+} = Astro.props;
+const canonical = new URL(Astro.url.pathname, SITE_URL).href;
+const ld = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'MTD Back Office',
+  url: SITE_URL,
+  email: EMAIL,
+  areaServed: 'GB',
+  priceRange: '££',
+};
+---
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <meta name="theme-color" content="#2E2A8C" />
+    <link rel="icon" href="/brand/icon-app.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="MTD Back Office" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={`${SITE_URL}/og.png`} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script is:inline>document.documentElement.classList.add('js');</script>
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(ld)} />}
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <Header />
+    <main id="main" tabindex="-1">
+      <slot />
+    </main>
+    <Footer />
+    <script>
+      import '../scripts/header.ts';
+    </script>
+  </body>
+</html>

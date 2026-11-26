@@ -1,0 +1,10 @@
+---
+interface Props { text: string; }
+const { text } = Astro.props;
+---
+<li class="bullet"><span class="sq" aria-hidden="true"></span>{text}</li>
+
+<style>
+  .bullet { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 600; }
+  .sq { width: 8px; height: 8px; background: var(--accent); border-radius: var(--radius-none); flex: none; }
+</style>

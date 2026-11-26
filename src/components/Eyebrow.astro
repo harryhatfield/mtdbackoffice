@@ -1,0 +1,15 @@
+---
+interface Props { text: string; }
+const { text } = Astro.props;
+---
+<p class="eyebrow"><span class="sq" aria-hidden="true"></span>{text}</p>
+
+<style>
+  .eyebrow {
+    display: flex; align-items: center; gap: 10px;
+    font-size: var(--fs-eyebrow); line-height: var(--lh-eyebrow);
+    font-weight: 600; letter-spacing: var(--ls-eyebrow);
+    text-transform: uppercase; color: var(--ink-muted);
+  }
+  .sq { width: 10px; height: 10px; background: var(--accent); border-radius: var(--radius-none); flex: none; }
+</style>

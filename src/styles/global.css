@@ -1,0 +1,81 @@
+@import '@fontsource/manrope/400.css';
+@import '@fontsource/manrope/600.css';
+@import '@fontsource/manrope/700.css';
+@import '@fontsource/manrope/800.css';
+@import './tokens.css';
+
+*, *::before, *::after { box-sizing: border-box; }
+
+:root { interpolate-size: allow-keywords; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-h, 76px);
+  -webkit-text-size-adjust: 100%;
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--ink);
+  background: var(--surface);
+}
+
+img, svg { max-width: 100%; height: auto; }
+
+h1, h2, h3, p, ol, ul { margin: 0; }
+h1 { font-size: var(--fs-h1); line-height: var(--lh-h1); letter-spacing: var(--ls-h1); font-weight: 800; color: var(--brand); }
+h2 { font-size: var(--fs-h2); line-height: var(--lh-h2); letter-spacing: var(--ls-h2); font-weight: 800; color: var(--brand); }
+h3 { font-size: var(--fs-h3); line-height: var(--lh-h3); font-weight: 700; }
+
+a { color: var(--brand); }
+a:hover { color: var(--ink); }
+
+:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+.on-brand :focus-visible, .on-brand:focus-visible { outline-color: var(--on-brand); }
+
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding-inline: var(--gutter);
+}
+.section { padding-block: var(--section-y); }
+.section--alt { background: var(--surface-alt); }
+.prose { max-width: 760px; }
+.lead { font-size: var(--fs-lead); line-height: var(--lh-lead); max-width: 760px; }
+
+.skip-link {
+  position: absolute;
+  left: var(--space-4);
+  top: -100px;
+  z-index: 100;
+  background: var(--brand);
+  color: var(--on-brand);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  font-weight: 700;
+}
+.skip-link:focus { top: var(--space-4); outline-color: var(--on-brand); }
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip-path: inset(50%); white-space: nowrap;
+}
+
+[id] { scroll-margin-top: var(--header-h, 76px); }
+
+/* Plain text pages (privacy, terms, thanks, 404) */
+.page { padding-block: var(--hero-y); }
+.page h1 { margin-bottom: var(--space-6); }
+.page p + p { margin-top: var(--space-4); }
+.placeholder {
+  background: var(--surface-alt);
+  border: 1px dashed var(--ink-muted);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  max-width: 760px;
+  margin-block: var(--space-6);
+}

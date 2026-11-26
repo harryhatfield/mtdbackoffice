@@ -1,0 +1,26 @@
+---
+import { EMAIL, INDEPENDENCE_LINE } from '../config';
+---
+<footer class="footer on-brand">
+  <div class="container inner">
+    <div class="brand">
+      <img src="/brand/logo-reversed.svg" alt="MTD Back Office" width="180" height="21" />
+      <p>MTD Back Office<br />Admin sorted · MTD ready</p>
+    </div>
+    <div class="links">
+      <a href="/privacy">Privacy notice</a>
+      <a href="/terms">Terms</a>
+      <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
+      <p>{INDEPENDENCE_LINE}</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer { background: var(--ink); color: var(--on-brand-muted); padding-block: 40px; font-size: var(--fs-small); line-height: var(--lh-small); }
+  .inner { display: flex; flex-wrap: wrap; gap: var(--space-6); justify-content: space-between; align-items: flex-start; }
+  .brand { display: flex; flex-direction: column; gap: var(--space-3); }
+  img { width: 180px; height: auto; }
+  .links { display: flex; flex-direction: column; gap: 6px; }
+  a { color: var(--on-brand); display: inline-flex; align-items: center; min-height: var(--target-min); }
+</style>

@@ -1,0 +1,37 @@
+---
+interface Props { question: string; answer: string; open?: boolean; }
+const { question, answer, open = false } = Astro.props;
+---
+<details class="faq" open={open}>
+  <summary>{question}<span class="icon" aria-hidden="true"></span></summary>
+  <p>{answer}</p>
+</details>
+
+<style>
+  .faq {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-faq);
+    padding: 0 24px;
+    transition: border-color var(--dur-base) var(--ease-out);
+  }
+  .faq[open] { border-color: var(--brand); }
+  summary {
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    min-height: var(--target-min); padding-block: 20px;
+    font-size: 18px; line-height: 1.4; font-weight: 700; cursor: pointer; list-style: none;
+  }
+  summary::-webkit-details-marker { display: none; }
+  .icon { position: relative; width: 16px; height: 16px; flex: none; }
+  .icon::before, .icon::after {
+    content: ''; position: absolute; background: var(--brand);
+    left: 0; right: 0; top: 7px; height: 2px;
+  }
+  .icon::after { left: 7px; right: 7px; top: 0; bottom: 0; height: auto; }
+  .faq[open] .icon::after { display: none; }
+  p { padding-bottom: 20px; }
+  .faq::details-content {
+    block-size: 0; overflow: hidden;
+    transition: block-size var(--dur-base) var(--ease-out), content-visibility var(--dur-base) allow-discrete;
+  }
+  .faq[open]::details-content { block-size: auto; }
+</style>

@@ -6,6 +6,7 @@
   --brand: #2E2A8C;            /* Office Indigo: headings, links, primary buttons */
   --brand-hover: #221E6E;      /* Primary button hover/active */
   --accent: #F5A524;           /* Signal Amber: logo square, highlight, button on indigo only */
+  --accent-hover: #E8951A;     /* Accent button hover */
   --ink: #1F1D4A;              /* Body text, footer ground */
   --ink-muted: #4A4870;        /* Secondary text */
   --on-brand: #FFFFFF;         /* Text on indigo */

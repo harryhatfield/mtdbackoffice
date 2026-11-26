@@ -1,0 +1,20 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+---
+<Layout title="Booking confirmed · MTD Back Office" noindex>
+  <div class="container page">
+    <h1>You're booked in.</h1>
+    <p class="lead">Thanks for booking your free 30-minute admin check. Here's what happens next.</p>
+    <ol class="next">
+      <li>You'll get a confirmation email with the call details.</li>
+      <li>On the call we look at what's slowing you down and what MTD means for you.</li>
+      <li>If it's a fit, you get a one-page fixed-price proposal the same day.</li>
+    </ol>
+    <Button label="Back to home" href="/" />
+  </div>
+</Layout>
+
+<style>
+  .next { margin-block: var(--space-6); padding-left: var(--space-6); display: flex; flex-direction: column; gap: var(--space-2); max-width: 760px; }
+</style>

@@ -1,0 +1,16 @@
+---
+interface Props { number: number; title: string; text: string; }
+const { number, title, text } = Astro.props;
+---
+<li class="step">
+  <span class="num" aria-hidden="true">{number}</span>
+  <span class="title">{title}</span>
+  <span class="text">{text}</span>
+</li>
+
+<style>
+  .step { display: flex; flex-direction: column; gap: 10px; }
+  .num { font-size: 44px; line-height: 1.1; font-weight: 800; color: var(--brand); }
+  .title { font-size: 19px; line-height: 1.4; font-weight: 700; }
+  .text { color: var(--ink-muted); }
+</style>

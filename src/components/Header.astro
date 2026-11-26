@@ -1,0 +1,65 @@
+---
+import Button from './Button.astro';
+import { bookingHref } from '../config';
+---
+<header class="header" id="site-header">
+  <div class="container bar">
+    <a class="logo" href="/" aria-label="MTD Back Office home">
+      <img class="logo-full" src="/brand/logo-primary.svg" alt="" width="200" height="24" />
+      <img class="logo-icon" src="/brand/icon-app.svg" alt="" width="32" height="32" />
+    </a>
+    <nav class="nav" aria-label="Main" id="site-nav">
+      <a href="/#how">How it works</a>
+      <a href="/#prices">Prices</a>
+      <a href="/#faq">FAQ</a>
+    </nav>
+    <div class="actions">
+      <Button label="Book a free check" href={bookingHref('header')} />
+      <button class="menu-btn" type="button" aria-label="Menu" aria-controls="site-nav" aria-expanded="false">
+        <span class="bars" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: sticky; top: 0; z-index: 50;
+    background: var(--surface);
+    border-bottom: 1px solid transparent;
+    transition: border-color var(--dur-fast) var(--ease-out);
+  }
+  .header.scrolled { border-bottom-color: var(--line); }
+  .bar { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); padding-block: 18px; flex-wrap: wrap; }
+  .logo { display: inline-flex; align-items: center; min-height: var(--target-min); }
+  .logo-full { width: 200px; height: auto; display: block; }
+  .logo-icon { display: none; }
+  .nav { display: flex; align-items: center; gap: var(--space-6); font-size: 15px; font-weight: 600; margin-left: auto; }
+  .nav a { color: var(--ink); text-decoration: none; display: inline-flex; align-items: center; min-height: var(--target-min); }
+  .nav a:hover { color: var(--brand); }
+  .actions { display: flex; align-items: center; gap: var(--space-2); }
+  .menu-btn {
+    display: none; width: var(--target-min); height: var(--target-min);
+    border: 2px solid var(--brand); border-radius: var(--radius-md);
+    background: transparent; cursor: pointer; align-items: center; justify-content: center;
+  }
+  .bars, .bars::before, .bars::after {
+    display: block; width: 18px; height: 2px; background: var(--brand); position: relative;
+  }
+  .bars::before, .bars::after { content: ''; position: absolute; left: 0; }
+  .bars::before { top: -6px; }
+  .bars::after { top: 6px; }
+
+  @media (max-width: 899px) {
+    .bar { padding-block: 12px; }
+    .logo-full { display: none; }
+    .logo-icon { display: block; }
+    /* No JS: links stay visible, stacked, below the bar */
+    .nav { order: 3; width: 100%; flex-direction: column; align-items: flex-start; gap: 0; margin-left: 0; padding-bottom: var(--space-2); }
+    .actions { margin-left: auto; }
+    :global(html.js) .menu-btn { display: inline-flex; }
+    :global(html.js) .nav { display: none; }
+    :global(html.js) .nav.open { display: flex; }
+    :global(html.js) .nav.open a { width: 100%; border-top: 1px solid var(--line); }
+  }
+</style>
